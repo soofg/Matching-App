@@ -1,0 +1,40 @@
+{
+  "name": "matchclothes",
+  "version": "1.1.2",
+  "description": "Match your clothes by occassion",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soofg/MatchingApp.git"
+  },
+  "keywords": [
+    "clothing",
+    "colors",
+    "clothes",
+    "t-shirt",
+    "wardrobe",
+    "closet",
+    "wardrobe",
+    "clotheshanger"
+  ],
+  "author": {
+    "name": "Sofya Gerges",
+    "email": "sofya.gerges@hva.nl",
+    "url": "https://github.com/soofg/MatchingApp.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "clothes-by-weather": "^1.1.2",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
