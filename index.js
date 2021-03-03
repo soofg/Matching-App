@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://soofg:
 const port = 3000;
 
 //Listen on port
