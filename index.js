@@ -102,7 +102,7 @@ app.get('/sendadvice', (req, res) => {
 });
 
 app.get('/clothingadvicesreceived', (req, res) => {
-    res.send('Formulier')
+    res.send('Formulierrr')
 });
 
     app.use(function (req, res, next) {
