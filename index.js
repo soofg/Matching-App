@@ -101,7 +101,7 @@ app.get('/sendadvice', (req, res) => {
 });
 
 app.get('/clothingadvicesreceived', (req, res) => {
-    res.send('Formulier')
+    res.send('Formulierr')
 });
 
     app.use(function (req, res, next) {
