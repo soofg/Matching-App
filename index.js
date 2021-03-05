@@ -9,6 +9,8 @@ const dotenv = require('dotenv').config();
 const port = 3000;
 
 
+
+
 let db = null;
 // function connectDB
 async function connectDB() {
@@ -21,15 +23,7 @@ async function connectDB() {
     db = await client.db(process.env.DATABASECONNECT)
 }
 
-connectDB()
-    .then(() => {
-        // if succesfull connections is made, show a message
-        console.log('We have a connection to Mongo!')
-    })
-    .catch(error => {
-        // if connnection is unsuccesful, show errors
-        console.log(error)
-    });
+
 
 
 //Listen on port
@@ -57,7 +51,7 @@ const maketheoutfit = [
         "id": "straplessdress",
         "name": "Strapless Dress",
         "material": "Polyester",
-        "image": "./public/images/homeimage.png",
+        "image": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fe1%2F87%2Fe187ff58b4d75b5390fe4e30b68e2365d21f6053.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bladies_dresses_maxidresses%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main",
         "categories": ["dress"],
         "merk": "H&M"
     },
@@ -66,7 +60,7 @@ const maketheoutfit = [
         "id": "leatherskirt",
         "name": "Leather Skirt",
         "material": "Leather",
-        "image": "./public/images/homeimage.png",
+        "image": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fed%2F1a%2Fed1a844848c5008efbd93be7ef4dc4ce37563a60.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
         "categories": ["skirt"],
         "merk": "ZARA"
     },
@@ -75,7 +69,7 @@ const maketheoutfit = [
         "id": "jeans",
         "name": "Jeans",
         "material": "Jeans",
-        "image": "./public/images/homeimage.png",
+        "image": "../public/images/homeimage.png",
         "categories": ["pants"],
         "merk": "Bershka"
     },

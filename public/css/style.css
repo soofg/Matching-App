@@ -68,6 +68,20 @@ main {
     margin: 1em;
   }
 
+  #maketheoutfit > article > img {
+    display: block;
+    width:  7em;
+    height: 10em;
+    object-fit: cover;
+  }
+
+  #maketheoutfit > article > img:nth-of-type(2) {
+    display: block;
+    width:  1em;
+    height: 1em;
+    object-fit: cover;
+  }
+
   .dot2 {
     height: 38px;
     width: 80px;
@@ -81,7 +95,7 @@ main {
   }
 
 
-#maketheoutfit img {
+#maketheoutfit > section > img {
       width: 4em;
       height: 3em;
       position: absolute;
@@ -100,7 +114,8 @@ main {
 }
 
 article {
-    padding-left: 1em;
+    display: grid;
+    margin-left: 1em;
     padding-right: 1em;
 }
   

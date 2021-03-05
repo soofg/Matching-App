@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <title>MatchingClothing</title>
-</head>
+  <%- include('../views/partials/head.ejs') %>
 
 <body>
   <%- include('../views/partials/header.ejs') %>
@@ -63,20 +57,12 @@
 
       <% maketheoutfit.forEach(function(maketheoutfit){ %>
         <article>
-          <h2>
-            <%= maketheoutfit.name %>
-          </h2>
-          <h3>
-            <%= maketheoutfit.image %>
-          </h3>
-          <h3>
-            <%= maketheoutfit.merk %>
-          </h3>
+          <h2><%= maketheoutfit.name %></h2>
+          <img src="<%= maketheoutfit.image %>">
+          <h3><%= maketheoutfit.merk %></h3>
           <h3>Categories: </h3>
           <% maketheoutfit.categories.forEach(function(category){ %>
-            <h4>
-              <%= category %>
-            </h4>
+          <h4><%= category %></h4>
             <% }) %>
               <p><a href="maketheoutfit/<%= maketheoutfit.id %>">More details</a></p>
 
