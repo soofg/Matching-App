@@ -9,6 +9,12 @@ const dotenv = require('dotenv').config();
 const port = 3000;
 
 console.log(process.env.TEST)
+
+let db = null;
+
+//function connect met de database
+async
+
 //Listen on port
 app.listen(3000, () => {
     console.log('Express web app on localhost:3000');
