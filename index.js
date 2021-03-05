@@ -4,7 +4,16 @@ console.log("hii")
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
+const {mongodb} = require('mongodb');
+const dotenv = require('dotenv').config();
 const port = 3000;
+
+console.log(process.env.TEST)
+
+let db = null;
+
+//function connect met de database
+async
 
 //Listen on port
 app.listen(3000, () => {
@@ -27,10 +36,30 @@ const categories = ["dress", "skirt", "pants"];
 const clothes = ["straplessdress", "leatherskirt", "jeans"];
 
 const maketheoutfit = [
-  { "id": "straplessdress", "name": "Strapless Dress", "material": "Polyester",  "image": "/public/images/homeimage.png", "categories": ["dress"],"merk": "H&M"},
-  { "id": "leatherskirt", "name": "Leather Skirt", "material": "Leather", "image": "/public/images/homeimage.png", "categories": ["skirt"],"merk": "ZARA"},
-  { "id": "jeans", "name": "Jeans", "material": "Jeans",  "image": "/public/images/homeimage.png", "categories": ["pants"],"merk": "Bershka"},
+  { "id": "straplessdress",
+    "name": "Strapless Dress", 
+   "material": "Polyester",  
+   "image": "./public/images/homeimage.png", 
+   "categories": ["dress"],
+   "merk": "H&M"},
+
+  { "id": "leatherskirt",
+   "name": "Leather Skirt",
+    "material": "Leather", 
+    "image": "./public/images/homeimage.png", 
+    "categories": ["skirt"],
+    "merk": "ZARA"},
+
+  { "id": "jeans",
+   "name": "Jeans", 
+   "material": "Jeans", 
+    "image": "./public/images/homeimage.png",
+     "categories": ["pants"], 
+     "merk": "Bershka"},
 ];
+
+
+const name = maketheoutfit.name
 
 
 //(EJS)Display je html op je localhost (omdat de index in de root van ons document zit, hoef je het niet te specificeren in de app.get('',))
@@ -49,8 +78,28 @@ app.get('/maketheoutfit',(req, res) => {
     res.render('maketheoutfit', {text: 'What To Wear', maketheoutfit})
 });
 
+app.get('/maketheoutfit', (req, res) => {
+
+    fs.readdir('public/images', (error, files) => {
+        var imgFiles = [];
+        files.forEach(file => {
+                var imgpath = './public' + '/images/' + file;
+                imgFiles.push(imgpath);
+       
+        })
+       
+        res.render('maketheoutfit', {imgFiles: imgFiles});   
+    
+    })
+    });
+
 app.get('/maketheoutfit/:clothingdetailsId',(req, res) => { //detailpagina
-    const clothes = maketheoutfit.find( maketheoutfit => clothes.id == req.params.clothingdetailsId);
+    const maketheoutfit = maketheoutfit.find( maketheoutfit => maketheoutfit.id == req.params.clothingdetailsId);
+    res.render('clothingdetails', {title: 'Clothing Details', clothes});
+});
+
+app.get('/clothingdetails',(req, res) => { //detailpagina
+    const name = maketheoutfit.find( maketheoutfit => clothes.id == req.params.clothingdetailsId);
     res.render('clothingdetails', {title: 'Clothing Details', clothes});
 });
 
@@ -101,7 +150,7 @@ app.get('/sendadvice', (req, res) => {
 });
 
 app.get('/clothingadvicesreceived', (req, res) => {
-    res.send('Formulierr')
+    res.send('Formulier')
 });
 
     app.use(function (req, res, next) {

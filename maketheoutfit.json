@@ -1,0 +1,5 @@
+[
+    { "id": "straplessdress", "name": "Strapless Dress", "material": "Polyester",  "image": "./public/images/homeimage.png", "categories": ["dress"],"merk": "H&M"},
+    { "id": "leatherskirt", "name": "Leather Skirt", "material": "Leather", "image": "./public/images/homeimage.png", "categories": ["skirt"],"merk": "ZARA"},
+    { "id": "jeans", "name": "Jeans", "material": "Jeans",  "image": "./public/images/homeimage.png", "categories": ["pants"],"merk": "Bershka"}
+]
