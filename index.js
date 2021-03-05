@@ -13,7 +13,7 @@ console.log(process.env.TEST)
 let db = null;
 
 //function connect met de database
-async.
+async
 
 //Listen on port
 app.listen(3000, () => {
