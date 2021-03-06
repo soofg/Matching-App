@@ -55,8 +55,9 @@
         <a class="submitknop">Done & Search</a>
       </ul>
 
-      <% maketheoutfit.forEach(function(maketheoutfit){ %>
+    
         <article>
+      <% maketheoutfit.forEach(function(maketheoutfit){ %>
           <h2><%= maketheoutfit.name %></h2>
           <img src="<%= maketheoutfit.image %>">
           <h3><%= maketheoutfit.merk %></h3>
@@ -68,6 +69,7 @@
 
               <% }) %>
         </article>
+      
 
 
 

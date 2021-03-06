@@ -6,10 +6,6 @@ h1 {
     font-size: 1.2em;
 }
 
-img {
-    
-}
-
 body {
     background-color: #EB9984;
     margin: 0;
@@ -71,15 +67,21 @@ main {
   #maketheoutfit > article > img {
     display: block;
     width:  7em;
-    height: 10em;
+    height: 9em;
     object-fit: cover;
   }
 
   #maketheoutfit > article > img:nth-of-type(2) {
     display: block;
-    width:  1em;
-    height: 1em;
-    object-fit: cover;
+    width:  7em;
+    height: 9em;
+    
+  }
+
+  #maketheoutfit > article > h3 {
+      font-size: 1em;
+      padding: 0.5em;
+      line-height: 0.1;
   }
 
   .dot2 {
@@ -111,13 +113,16 @@ main {
 
 #maketheoutfit h2, h3 {
     font-size: 1em;
+    grid-column: 1 / 2;
 }
 
-article {
+#maketheoutfit > article {
     display: grid;
-    margin-left: 1em;
-    padding-right: 1em;
+    grid-template-columns: 50% 50% auto;
+    grid-gap: 1;
 }
+
+
   
 
 ul {

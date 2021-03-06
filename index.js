@@ -4,11 +4,9 @@ console.log("hii")
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
-const { MongoClient } = require('mongodb');
 const dotenv = require('dotenv').config();
 const port = 3000;
-
-
+const MongoClient = require('mongodb').MongoClient;
 
 
 let db = null;
@@ -20,8 +18,18 @@ async function connectDB() {
     const options = { useUnifiedTopology: true };
     const client = new MongoClient(uri, options)
     await client.connect();
-    db = await client.db(process.env.DATABASECONNECT)
+    db = await client.db(process.env.DATABASENAME)
 }
+
+connectDB()
+    .then(() => {
+        // if succesfull connections is made, show a message
+        console.log('We have a connection to Mongo!')
+    })
+    .catch(error => {
+        // if connnection is unsuccesful, show errors
+        console.log(error)
+    });
 
 
 
@@ -43,40 +51,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 
 const categories = ["dress", "skirt", "pants"];
-
 const clothes = ["straplessdress", "leatherskirt", "jeans"];
-
-const maketheoutfit = [
-    {
-        "id": "straplessdress",
-        "name": "Strapless Dress",
-        "material": "Polyester",
-        "image": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fe1%2F87%2Fe187ff58b4d75b5390fe4e30b68e2365d21f6053.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bladies_dresses_maxidresses%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main",
-        "categories": ["dress"],
-        "merk": "H&M"
-    },
-
-    {
-        "id": "leatherskirt",
-        "name": "Leather Skirt",
-        "material": "Leather",
-        "image": "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fed%2F1a%2Fed1a844848c5008efbd93be7ef4dc4ce37563a60.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
-        "categories": ["skirt"],
-        "merk": "ZARA"
-    },
-
-    {
-        "id": "jeans",
-        "name": "Jeans",
-        "material": "Jeans",
-        "image": "../public/images/homeimage.png",
-        "categories": ["pants"],
-        "merk": "Bershka"
-    },
-];
-
-
-const name = maketheoutfit.name
 
 
 //(EJS)Display je html op je localhost (omdat de index in de root van ons document zit, hoef je het niet te specificeren in de app.get('',))
