@@ -64,25 +64,94 @@ main {
     margin: 1em;
   }
 
-  #maketheoutfit > article > img {
+  #maketheoutfit > article {
     display: block;
-    width:  7em;
-    height: 9em;
-    object-fit: cover;
+    margin: 1em;
+    background-color: #edede1;
+    border-radius: 1em;
+    box-shadow: 0px 3px 10px -1px lightgrey;
   }
+
+  #maketheoutfit > article > img:nth-of-type(1) {
+    display: block;
+    width:  16em;
+    height: 23em;
+    margin: 1em;
+    margin-left: auto 0;
+    margin-right: auto 0;   
+  }
+
 
   #maketheoutfit > article > img:nth-of-type(2) {
     display: block;
-    width:  7em;
-    height: 9em;
-    
+    width:  16em;
+    height: 23em;
+    margin: 1em;
+    margin-left: auto 0;
+    margin-right: auto 0;   
   }
 
-  #maketheoutfit > article > h3 {
+  .hartje {
+    width:  2em;
+    height: 4em;
+  }
+
+  #maketheoutfit > article > h2 {
+      text-align: center;
+      padding-top: 1em;
+  }
+
+  #maketheoutfit > article > h4 {
       font-size: 1em;
       padding: 0.5em;
-      line-height: 0.1;
+      line-height: 1;
+      grid-column: 1;
+      grid-row: 1;
+      display: block;
+      margin: 1em;
   }
+
+  #maketheoutfit > article > h4:nth-of-type(2) {
+    font-size: 1em;
+    padding: 0.5em;
+    line-height: 1em;
+    grid-column: 2;
+    grid-row: 2;
+    display: block;
+    margin: 1em;
+}
+
+#maketheoutfit > article > h5:nth-of-type(2) {
+    font-size: 1em;
+    padding: 0.5em;
+    height: 0 auto;
+    line-height: 1;
+    grid-column: 2/2;
+    grid-row: 2;
+    display: block;
+    margin: 1em;
+}
+
+#maketheoutfit > article > h6:nth-of-type(2) {
+    font-size: 1em;
+    padding: 0.5em;
+    line-height: 1em;
+    grid-column: 2;
+    grid-row: 2;
+    display: block;
+    margin: 1em;
+}
+
+  #maketheoutfit > article > a {
+    font-size: 1em;
+    padding: 1em;
+    line-height: 1;
+    height: 0 auto;
+    grid-column: 1;
+    grid-row: 1;
+    display: block;
+    margin: 1em;
+}
 
   .dot2 {
     height: 38px;
@@ -103,27 +172,15 @@ main {
       position: absolute;
       left: 0.2em;
       top: 0.6em;
+
   }
 
- #maketheoutfit section {
+ #maketheoutfit > section {
       position: relative;
       display: grid;
       grid-template-columns: 20% 30% 30% auto;
   }
-
-#maketheoutfit h2, h3 {
-    font-size: 1em;
-    grid-column: 1 / 2;
-}
-
-#maketheoutfit > article {
-    display: grid;
-    grid-template-columns: 50% 50% auto;
-    grid-gap: 1;
-}
-
-
-  
+ 
 
 ul {
     list-style-type: none;

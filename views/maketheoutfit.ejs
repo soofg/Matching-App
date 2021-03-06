@@ -55,27 +55,25 @@
         <a class="submitknop">Done & Search</a>
       </ul>
 
-    
-        <article>
-      <% maketheoutfit.forEach(function(maketheoutfit){ %>
-          <h2><%= maketheoutfit.name %></h2>
-          <img src="<%= maketheoutfit.image %>">
-          <h3><%= maketheoutfit.merk %></h3>
-          <h3>Categories: </h3>
-          <% maketheoutfit.categories.forEach(function(category){ %>
-          <h4><%= category %></h4>
-            <% }) %>
-              <p><a href="maketheoutfit/<%= maketheoutfit.id %>">More details</a></p>
+
+      <article>
+      <% maketheoutfit.forEach(function(clothes){ %>
+      <h2><%= clothes.name %></h2>
+          <img src="<%= clothes.image %>">
+          <img class="hartje" src="hartje.svg" alt="a heart">
+          <h4><%= clothes.merk %></h4>
+          <h5>Categories: 
+          <% clothes.categories.forEach(function(category){ %>
+          <%= category %>
+            <% }) %></h5>
+              <a href="maketheoutfit/<%= clothes.id %>">More details</a>
 
               <% }) %>
         </article>
+        <%= %>
+
       
-
-
-
-
-
-
+        
 
     </main>
     <script src="/js/script.js"></script>

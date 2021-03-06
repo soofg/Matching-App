@@ -7,13 +7,16 @@
     <%- include('../views/partials/header.ejs') %>
 
         <main>
-          <h1><%= title %></h1>
-
-          <article> 
-          <h1>Leather</h1>
-      </article>
- 
-
+    <h1><%= title %></h1>
+    <h2><%= clothes.name %></h2>
+    <img src="<%= clothes.image %>">
+    <h3><%= clothes.merk %></h3>
+    <h3>Categories: </h3>
+    <ul>
+        <% clothes.categories.forEach(function(category){ %>
+        <li><%= category %></li>
+        <% }) %>
+    <p><%= clothes.id %></p>
         </main>
 
 </body>
