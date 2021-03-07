@@ -120,10 +120,10 @@ main {
   width: 1.5em;
   height: 1.5em;
   position: absolute;
-  left: 17.1em;
+  left: 7.1em;
   display: flex;
   top: 1.4em;
-  grid-columns: 2/2;
+  grid-column: 2/2;
 }
  
 
@@ -144,7 +144,7 @@ main {
     margin: 1em;
     margin-left: auto 0;
     margin-right: auto 0; 
-    border-box: 1em;
+    border: 1em;
   }
 
 
