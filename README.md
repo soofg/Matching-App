@@ -6,7 +6,16 @@
 You look good and you meet new people to build friendships with, gets off the tension of not knowing what to wear and evolves your fashionstyle!
 
 ### How to install
-Open your terminal and type in:  
+Open your terminal and make sure you are in the right directory,
+to make a new directory type in:  
+``mkdir MatchingClothing``  
+_"MatchingClothing"_ can be replaced with any name you like.
+
+Navigate to this directory by typing:  
+``cd MatchingClothing``
+
+Now you can actually start installing:
+
 ``git clone https://github.com/soofg/Matching-App.git``  
 
 ``npm install``  
