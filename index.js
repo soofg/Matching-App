@@ -129,6 +129,12 @@ app.get('/outfithelprequest', (req, res) => {
     res.render('outfithelprequest', { title: "Hi" });
 });
 
+app.get('/maketheoutfit/chosenclothing', (req, res) => {
+    console.log("laden gelukt");
+    res.render('chosenclothing', { title: "Hi" });
+});
+
+
 app.post('/outfithelprequest', (req, res) => {
     console.log(req.body.location)
     res.render('sendOutfitrequest', { title: "Request has been sent!" });

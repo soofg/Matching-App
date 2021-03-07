@@ -8,9 +8,10 @@
 
     <main id="maketheoutfit">
       <section>
-        <button class="menuknop"></button>
-        <span class="dot2"></span>
+        <button></button>
         <img src="pen.png" alt="pen">
+        <a href="/maketheoutfit/chosenclothing"></a>
+        <img src="hartje.svg" href="/maketheoutfit/chosenclothing" alt="a heart">
       </section>
       <ul>
         <li class="submenuknop"><a>Merken</a></li>
@@ -55,7 +56,6 @@
         <a class="submitknop">Done & Search</a>
       </ul>
 
-
       <article>
       <% maketheoutfit.forEach(function(clothes){ %>
       <h2><%= clothes.name %></h2>
@@ -67,10 +67,15 @@
           <%= category %>
             <% }) %></h5>
               <a href="maketheoutfit/<%= clothes.id %>">More details</a>
-
               <% }) %>
         </article>
-        <%= %>
+        <%_ %>
+
+       <nav>
+       <a href=" "></a>
+       </nav>
+
+
 
       
         
