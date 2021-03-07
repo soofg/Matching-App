@@ -235,7 +235,9 @@ main {
     margin-left: 0.5em;
   }
 
-
+  #maketheoutfit > button {
+      display: block;
+  }
 
  #maketheoutfit > section {
       position: relative;

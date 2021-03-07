@@ -13,10 +13,10 @@
         <a href="/maketheoutfit/chosenclothing"></a>
         <img src="hartje.svg" href="/maketheoutfit/chosenclothing" alt="a heart">
       </section>
-      <form method="post">
       <ul>
         <li class="submenuknop"><a>Merken</a></li>
         <ol>
+          <form method="post">
             <input type="checkbox" name="merken" value="straplessdress">H&M
             <label>H&M</label>
 
@@ -48,41 +48,12 @@
             <input type="checkbox" name="categories" value="jeans">
             <label>Jeans</label>
           </div>
-        </ol>
-      </ul>
+
   
           <button type="submit" name="merken" class="submitknop">Done & Search</button>
-        </form>
         
+
+        </ol>
+      </ul>
+      </form>
     
-
-      <article>
-      <% maketheoutfit.forEach(function(clothes){ %>
-      <h2><%= clothes.name %></h2>
-          <img src="<%= clothes.image %>">
-          <img class="hartje" src="hartje.svg" alt="a heart">
-          <h4><%= clothes.merk %></h4>
-          <h4><%= clothes.category %></h4>
-          <h5>Categories: 
-          <% clothes.categories.forEach(function(category){ %>
-          <%= category %>
-            <% }) %></h5>
-              <a href="maketheoutfit/<%= clothes.id %>">More details</a>
-              <% }) %>
-        </article>
-        <%_ %>
-
-       <nav>
-       <a href=" "></a>
-       </nav>
-
-
-
-      
-        
-
-    </main>
-    <script src="/js/script.js"></script>
-</body>
-
-</html>
