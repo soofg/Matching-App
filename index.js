@@ -103,7 +103,6 @@ app.get('/menu', (req, res) => {
 })
 
 app.get('/maketheoutfit', async (req, res) => {
-    let maketheoutfit = {}
     // async: 
     // let: 
     //await: Start pas als alles is geladen 
@@ -111,11 +110,16 @@ app.get('/maketheoutfit', async (req, res) => {
     //find: zoeken (in dit geval in de database)
     // ingevulde sort ziet er uit als {sort: {merk: -1, name: 1})} : geeft de volgorde van wat onder moet en wat bovenaan
     //toArray: een array ervan maken, in de database hebben we het gezet met [] > zie maketheoutfit.json
+    let maketheoutfit = {} // data vanuit de database
     maketheoutfit = await db.collection('clothes').find({},{sort: {}}).toArray();
     res.render('maketheoutfit', { text: 'What To Wear', maketheoutfit })
 });
 
-app.get('/maketheoutfit', (req, res) => {
+app.post('/maketheoutfit', async (req, res) => {
+    let maketheoutfit = {}
+    maketheoutfit = await db.collection('clothes');
+    
+    let results = maketheoutfit.find(clothes => clothes.id === checkboxValue); 
     res.render('maketheoutfit', {})
 });
 
