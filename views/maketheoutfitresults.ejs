@@ -13,6 +13,7 @@
         <a href="/maketheoutfit/chosenclothing"></a>
         <img src="hartje.svg" href="/maketheoutfit/chosenclothing" alt="a heart">
       </section>
+
       <ul>
         <li class="submenuknop"><a>Merken</a></li>
         <ol>
@@ -57,3 +58,25 @@
       </ul>
       </form>
     
+    </main>
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
+  
+
+<article>
+  <% maketheoutfit.forEach(function(clothes){ %>
+  <h2><%= clothes.name %></h2>
+      <img src="<%= clothes.image %>">
+      <img class="hartje" src="hartje.svg" alt="a heart">
+      <h4><%= clothes.merk %></h4>
+      <h4><%= clothes.category %></h4>
+      <h5>Categories: 
+      <% clothes.categories.forEach(function(category){ %>
+      <%= category %>
+        <% }) %></h5>
+          <a href="maketheoutfit/<%= clothes.id %>">>See this item</a>
+          <% }) %>
+    </article>
+    <%_ %>

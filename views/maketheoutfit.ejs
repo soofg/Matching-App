@@ -13,7 +13,10 @@
         <a href="/maketheoutfit/chosenclothing"></a>
         <img src="hartje.svg" href="/maketheoutfit/chosenclothing" alt="a heart">
       </section>
-      <form method="post">
+
+
+      
+    <form method="post">
       <ul>
         <li class="submenuknop"><a>Merken</a></li>
         <ol>
@@ -49,9 +52,10 @@
             <label>Jeans</label>
           </div>
         </ol>
+
+    
+        <button id="submitbutton "type="submit" class="submitknop">Done & Search</button>
       </ul>
-  
-          <button type="submit" name="merken" class="submitknop">Done & Search</button>
         </form>
         
     
@@ -67,7 +71,7 @@
           <% clothes.categories.forEach(function(category){ %>
           <%= category %>
             <% }) %></h5>
-              <a href="maketheoutfit/<%= clothes.id %>">More details</a>
+              <a href="maketheoutfit/<%= clothes.id %>">>See this item</a>
               <% }) %>
         </article>
         <%_ %>

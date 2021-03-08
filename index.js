@@ -7,8 +7,10 @@ const app = express();
 const dotenv = require('dotenv').config();
 const port = 3000;
 const MongoClient = require('mongodb').MongoClient;
+const mongoose = require('mongoose');
+const Clothes = require('./models/clothes');
 
-
+// verbinden met de mongo database
 let db = null;
 // function connectDB
 async function connectDB() {
@@ -21,6 +23,7 @@ async function connectDB() {
     db = await client.db(process.env.DATABASENAME)
 }
 
+// een 'test' om te achterhalen of de database is verbonden
 connectDB()
     .then(() => {
         // if succesfull connections is made, show a message
@@ -32,8 +35,16 @@ connectDB()
     });
 
 
+mongoose.connect((process.env.DATABASECONNECT),  { useUnifiedTopology: true, useNewUrlParser: true}) //voor de errors in terminal (deprication warnings)
+ .then((result) => { console.log('We have a connection to db!')
+})
+.catch((error )=> { console.log(error)
+})
+        
 
 
+
+// dit is waar de applicatie zich bevindt, hij 'luistert op port 3000, daar wordt de app weergegeven.
 //Listen on port
 app.listen(3000, () => {
     console.log('Express web app on localhost:3000');
@@ -58,33 +69,36 @@ app.get('', (req, res) => {
 });
 
 app.get('/menu', (req, res) => {
-    res.render('menu', { text: 'Suprise Suprise, welcome on this page everyone.' })
+    res.render('menu', { text: ' ' })
 })
 
-app.get('/maketheoutfit', async (req, res) => {
-    // async: 
+//--
+// async: 
     // let: 
     //await: Start pas als alles is geladen 
     // db: database > collection: submapje in je database die in dit geval informatie heeft over kleding
     //find: zoeken (in dit geval in de database)
     // ingevulde sort ziet er uit als {sort: {merk: -1, name: 1})} : geeft de volgorde van wat onder moet en wat bovenaan
     //toArray: een array ervan maken, in de database hebben we het gezet met [] > zie maketheoutfit.json
+app.get('/maketheoutfit', async (req, res) => {
     let maketheoutfit = {} // data vanuit de database
     maketheoutfit = await db.collection('clothes').find({},{sort: {}}).toArray();
     res.render('maketheoutfit', { text: 'What To Wear', maketheoutfit })
 });
 
-app.post('/maketheoutfit', async (req, res) => {
+app.post('/maketheoutfit/:ClothedId', async (req, res) => {
+    clothes = await db.collection('clothes').find({}).toArray();
     console.log(req.body.merken);
     console.log(req.body.categories);
+
     let merken = {}
     let categories = {}
-    merken = clothes.find(clothes => {return clothes.id === req.body.merken}).toArray();
-    categories = clothes.find(clothes => {return clothes.id === req.body.categories}).toArray();
-
-    clothes = await db.collection('clothes').find({}).toArray();
-    res.render('maketheoutfit', {})
+    maketheoutfit = clothes.find(clothes => { return clothes.id === req.body.merken})
+    maketheoutfit = clothes.find(clothes => { return clothes.id === req.body.categories})
+    res.render('maketheoutfitresults', {});
 });
+
+
 
 app.get('/maketheoutfit/:clothesId', async (req, res) => { 
     const clothes = await db.collection('clothes').findOne({ id: req.params.clothesId });
@@ -113,40 +127,7 @@ app.set('view engine', 'ejs')
 
 
 // routing
-app.get('/', (req, res) => { // homepage
-    res.send('MatchingApp (Sofya Gerges)');
-});
 
-app.get('/menu', (req, res) => {
-    res.send('Formulier')
-});
-
-app.get('/maketheoutfit', (req, res) => { //choose the clothes for a request (give advice)
-    res.send('Formulier')
-});
-
-
-app.get('/maketheoutfit/:clothingdetailsId', (req, res) => {
-    res.render('clothingdetails', { title: "Clothing details", maketheoutfit });
-    res.send(`<h1>Detailpage of the ${req.params.maketheoutfitId}</h1>`)
-});
-
-app.get('/outfithelprequest', (req, res) => {
-    res.send('Formulier')
-});
-
-app.get('/friends', (req, res) => { // andere gebruikers die een request gaan adviseren
-    res.send('choose matching clothes')
-});
-
-
-app.get('/sendadvice', (req, res) => {
-    res.send('Formulier')
-});
-
-app.get('/clothingadvicesreceived', (req, res) => {
-    res.send('Formulier')
-});
 
 app.use(function (req, res, next) {
     res.status(404).send("404 Not Found")
