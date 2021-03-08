@@ -7,9 +7,9 @@
   pager = true
 
   [color "status"]
-  added = green
+  added = purple
   changed = red bold
   untracked = magenta bold
 
 [color "branch"]
-  remote = purple
+  remote = green
