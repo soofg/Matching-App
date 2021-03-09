@@ -1,92 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <%- include('../views/partials/head.ejs') %>
 
-<body>
-  <%- include('../views/partials/header.ejs') %>
+  <body>
+    <%- include('../views/partials/header.ejs') %>
 
     <main id="maketheoutfit">
       <section>
         <button></button>
-        <img src="pen.png" alt="pen">
+        <img src="pen.png" alt="pen" />
         <a href="/maketheoutfit/chosenclothing"></a>
-        <img src="hartje.svg" href="/maketheoutfit/chosenclothing" alt="a heart">
+        <img
+          src="hartje.svg"
+          href="/maketheoutfit/chosenclothing"
+          alt="a heart"
+        />
       </section>
 
-
-      
-    <form method="post">
-      <ul>
-        <li class="submenuknop"><a>Merken</a></li>
-        <ol>
-            <input type="checkbox" name="merken" value="straplessdress">H&M
+      <form method="post">
+        <ul>
+          <li class="submenuknop"><a>Merken</a></li>
+          <ol>
+            <input type="checkbox" name="merken" value="straplessdress" />H&M
             <label>H&M</label>
 
-          <div>
-            <input type="checkbox" name="merken" value="leatherskirt">
-            <label>ZARA</label>
-          </div>
+            <div>
+              <input type="checkbox" name="merken" value="leatherskirt" />
+              <label>ZARA</label>
+            </div>
 
-          <div>
-            <input type="checkbox" name="merken" value="jeans">
-            <label>Bershka</label>
-          </div>
-        </ol>
+            <div>
+              <input type="checkbox" name="merken" value="jeans" />
+              <label>Bershka</label>
+            </div>
+          </ol>
 
-      
-        <li class="submenuknop2"><a>Prijs</a></li>
+          <li class="submenuknop2"><a>Prijs</a></li>
 
-        <li id="submenuknop3"><a>Categories</a></li>
-        <ol id=menulijst3>
-            <input type="checkbox" name="categories" value="straplessdress">
+          <li id="submenuknop3"><a>Categories</a></li>
+          <ol id="menulijst3">
+            <input type="checkbox" name="categories" value="straplessdress" />
             <label>Dress</label>
 
-          <div>
-            <input type="checkbox" name="categories" value="leatherskirt">
-            <label>Skirt</label>
-          </div>
+            <div>
+              <input type="checkbox" name="categories" value="leatherskirt" />
+              <label>Skirt</label>
+            </div>
 
-          <div>
-            <input type="checkbox" name="categories" value="jeans">
-            <label>Jeans</label>
-          </div>
-        </ol>
+            <div>
+              <input type="checkbox" name="categories" value="jeans" />
+              <label>Jeans</label>
+            </div>
+          </ol>
 
-    
-        <button id="submitbutton "type="submit" class="submitknop">Done & Search</button>
-      </ul>
-        </form>
-        
-    
+          <button id="submitbutton " type="submit" class="submitknop">
+            Done & Search
+          </button>
+        </ul>
+      </form>
 
       <article>
-      <% maketheoutfit.forEach(function(clothes){ %>
-      <h2><%= clothes.name %></h2>
-          <img src="<%= clothes.image %>">
-          <img class="hartje" src="hartje.svg" alt="a heart">
-          <h4><%= clothes.merk %></h4>
-          <h4><%= clothes.category %></h4>
-          <h5>Categories: 
-          <% clothes.categories.forEach(function(category){ %>
-          <%= category %>
-            <% }) %></h5>
-              <a href="maketheoutfit/<%= clothes.id %>">>See this item</a>
-              <% }) %>
-        </article>
-        <%_ %>
-
-       <nav>
-       <a href=" "></a>
-       </nav>
-
-
-
+        <% maketheoutfit.forEach(function(clothes){ %>
+        <h2><%= clothes.name %></h2>
+            <img src="<%= clothes.image %>">
+            <img class="hartje" src="hartje.svg" alt="a heart">
+            <h4><%= clothes.merk %></h4>
+            <h4><%= clothes.category %></h4>
+            <h5>Categories: 
+            <% clothes.categories.forEach(function(category){ %>
+            <%= category %>
+              <% }) %></h5>
+                <a href="maketheoutfit/<%= clothes.id %>">>See this item</a>
+                <% }) %>
+          </article>
       
-        
 
+      <nav>
+        <a href=" "></a>
+      </nav>
     </main>
     <script src="/js/script.js"></script>
-</body>
-
+  </body>
 </html>

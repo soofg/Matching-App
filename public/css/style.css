@@ -137,18 +137,8 @@ main {
   }
   
 
-#maketheoutfit > article > img:nth-of-type(1) {
-    display: block;
-    width:  16em;
-    height: 23em;
-    margin: 1em;
-    margin-left: auto 0;
-    margin-right: auto 0; 
-    border: 1em;
-  }
-
-
-  #maketheoutfit > article > img:nth-of-type(3) {
+ /*leatherskirt*/
+  #maketheoutfit > article > img:nth-of-type(1), img:nth-of-type(3), img:nth-of-type(5) {
     display: block;
     width:  16em;
     height: 23em;
@@ -156,6 +146,8 @@ main {
     margin-left: auto 0;
     margin-right: auto 0; 
   }
+
+  
 
   .hartje {
     width:  2em;

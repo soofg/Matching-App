@@ -11,14 +11,16 @@
     <h2><%= clothes.name %></h2>
     <img src="<%= clothes.image %>">
     <h3><%= clothes.merk %></h3>
-    <h3>Categories: </h3>
+    <h3><%= clothes.material %></h3>
+    <h4>Categories: </h4>
     <ul>
         <% clothes.categories.forEach(function(category){ %>
         <li><%= category %></li>
         <% }) %>
-    <p><%= clothes.id %></p>
+    </ul>
         </main>
 
 </body>
-
+<script src="/js/script.js"></script>
+</body>
 </html>
