@@ -85,15 +85,18 @@ app.get('/maketheoutfit', async (req, res) => {
 });
 
 app.post('/maketheoutfit', async (req, res) => {
-  clothes = await db.collection('clothes').find({}).toArray();
+  const clothes = await db.collection('clothes').find({}).toArray();
+  const clothingitems = clothes.filter((clothes) => clothes.merk.toLowerCase() === req.body.merken.toLowerCase() && clothes.categories.includes(req.body.categories.toLowerCase()));
+  console.log(clothingitems);
+  console.log(clothes);
   console.log(req.body.merken);
   console.log(req.body.categories);
+  res.render('maketheoutfitresults', {maketheoutfit:clothingitems});
+});
 
-  const merken = {};
-  const categories = {};
-  maketheoutfit = clothes.find((clothes) => clothes.id === req.body.merken);
-  maketheoutfit = clothes.find((clothes) => clothes.id === req.body.categories);
-  res.render('maketheoutfitresults', {});
+app.get('/maketheoutfit/chosenclothing', (req, res) => {
+  console.log('laden gelukt');
+  res.render('chosenclothing', { title: 'Hi' });
 });
 
 app.get('/maketheoutfit/:clothesId', async (req, res) => {
@@ -107,10 +110,7 @@ app.get('/outfithelprequest', (req, res) => {
   res.render('outfithelprequest', { title: 'Hi' });
 });
 
-app.get('/maketheoutfit/chosenclothing', (req, res) => {
-  console.log('laden gelukt');
-  res.render('chosenclothing', { title: 'Hi' });
-});
+
 
 app.post('/outfithelprequest', (req, res) => {
   res.render('sendOutfitrequest', { title: 'Request has been sent!' });
