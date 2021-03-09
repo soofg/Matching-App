@@ -7,6 +7,8 @@ You look good and you meet new people to build friendships with, gets off the te
 # Table of Contents
 - How to install
 - About the feature
+- Contact
+- License
 
 ## How to install
 Open your terminal and make sure you are in the right directory,
