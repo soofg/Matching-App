@@ -63,7 +63,9 @@
         <% maketheoutfit.forEach(function(clothes){ %>
         <h2><%= clothes.name %></h2>
             <img src="<%= clothes.image %>">
-            <img class="hartje" src="hartje.svg" alt="a heart">
+            <form action="/maketheoutfit/chosenclothing" method="POST">
+            <button type="submit" name="saveit" value="<%= clothes._id %>"><img id="hartButton"class="hartje" src="hartje.svg" alt="a heart"></button>
+            </form>
             <h4><%= clothes.merk %></h4>
             <h4><%= clothes.category %></h4>
             <h5>Categories: 

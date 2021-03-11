@@ -8,7 +8,7 @@ const app = express();
 const dotenv = require('dotenv').config();
 
 const port = 3000;
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectID } = require('mongodb');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
 const Clothes = require('./models/clothes');
@@ -70,6 +70,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('', (req, res) => {
   res.render('index', { text: 'Find Friends' });
 });
+
 app.get('', (req, res) => {
   res.render('index', { text: 'Help finding outfits for occassions' });
 });
@@ -91,26 +92,76 @@ app.post('/maketheoutfit', async (req, res) => {
   console.log(clothes);
   console.log(req.body.merken);
   console.log(req.body.categories);
-  res.render('maketheoutfitresults', {maketheoutfit:clothingitems});
+  res.render('maketheoutfitresults', { maketheoutfit: clothingitems });
 });
 
-app.get('/maketheoutfit/chosenclothing', (req, res) => {
-  console.log('laden gelukt');
-  res.render('chosenclothing', { title: 'Hi' });
+app.get('/maketheoutfit/chosenclothing', async (req, res) => {
+  const clothes = await db.collection('clothes');
+  const savedItems = await db.collection('savedItems');
+  const objectID = new ObjectID('604a14c5aabbc00b883fdc28');
+
+  savedItems.findOne({ _id: objectID }, (err, savedItemsObject) => {
+    if (err) {
+      console.log(err);
+    } else {
+      clothes
+        .find({ _id: { $in: savedItemsObject.saves } })
+        .toArray((err, savedClothing) => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.render('chosenclothing', {
+              title: 'Saved Items',
+              savedClothing,
+            });
+          }
+        });
+    }
+  });
 });
 
+app.post('/maketheoutfit/chosenclothing', async (req, res) => {
+  const clothes = await db.collection('clothes');
+  const savedItems = await db.collection('savedItems');
+  const objectID = new ObjectID('604a14c5aabbc00b883fdc28');
+  const savedItem = new ObjectID(req.body.saveit);
+
+  await savedItems.update(
+    { _id: objectID },
+    { $push: { saves: savedItem } },
+  );
+
+  savedItems.findOne({ _id: objectID }, (err, savedItemsObject) => {
+    if (err) {
+      console.log(err);
+    } else {
+      clothes
+        .find({ _id: { $in: savedItemsObject.saves } })
+        .toArray((err, savedClothing) => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.render('chosenclothing', {
+              title: 'Saved Items',
+              savedClothing,
+            });
+          }
+        });
+    }
+  });
+});
+
+// detailpagina kleding
 app.get('/maketheoutfit/:clothesId', async (req, res) => {
-  const clothes = await db
-    .collection('clothes')
-    .findOne({ id: req.params.clothesId });
+  const clothes = await db.collection('clothes').findOne({ id: req.params.clothesId });
   res.render('clothingdetails', { title: 'Clothing Details', clothes });
 });
+
+// formuliertje
 
 app.get('/outfithelprequest', (req, res) => {
   res.render('outfithelprequest', { title: 'Hi' });
 });
-
-
 
 app.post('/outfithelprequest', (req, res) => {
   res.render('sendOutfitrequest', { title: 'Request has been sent!' });
