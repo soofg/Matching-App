@@ -3,13 +3,10 @@ console.log('hii');
 // imports
 const bodyParser = require('body-parser');
 const express = require('express');
-
 const app = express();
 const dotenv = require('dotenv').config();
-
 const port = 3000;
 const { MongoClient, ObjectID } = require('mongodb');
-const mongoose = require('mongoose');
 const ejs = require('ejs');
 
 // verbinden met de mongo database
@@ -33,19 +30,6 @@ connectDB()
   })
   .catch((error) => {
     // if connnection is unsuccesful, show errors
-    console.log(error);
-  });
-
-// verbind mongoose met de database
-mongoose
-  .connect(process.env.DATABASECONNECT, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-  }) // voor de errors in terminal (deprication warnings)
-  .then((result) => {
-    console.log('We have a connection to db!');
-  })
-  .catch((error) => {
     console.log(error);
   });
 
