@@ -90,8 +90,11 @@ main {
     box-shadow: 0px 3px 10px -1px #5B5B5B;
     right: 0.9em;
     top: 0.8em;
+    text-align: center;
+    line-height: -1em;
     position: absolute;
     border: 0.15em solid black;
+    text-decoration: none;
   }
 
   #maketheoutfit > nav > a {
@@ -115,17 +118,6 @@ main {
 
 }
 
-/*Hartje bovenaan */
-#maketheoutfit > section > img:nth-of-type(2) {
-  width: 1.5em;
-  height: 1.5em;
-  position: absolute;
-  left: 7.1em;
-  display: flex;
-  top: 1.4em;
-  grid-column: 2/2;
-}
- 
 
 
 #maketheoutfit > article {
@@ -138,13 +130,13 @@ main {
   
 
  /*leatherskirt*/
-  #maketheoutfit > article > img:nth-of-type(1), img:nth-of-type(3), img:nth-of-type(5) {
+ #maketheoutfit > article > img:nth-of-type(1), img:nth-of-type(2), img:nth-of-type(3) {
     display: block;
     width:  16em;
     height: 23em;
     margin: 1em;
-    margin-left: auto 0;
-    margin-right: auto 0; 
+    margin-left: 0 auto;
+    margin-right: 0 auto; 
   }
 
   
@@ -164,7 +156,6 @@ main {
 
   #maketheoutfit > article > h4 {
       font-size: 1em;
-      padding: 0.5em;
       line-height: 1;
       grid-column: 1;
       grid-row: 1;
@@ -172,21 +163,8 @@ main {
       margin: 1em;
   }
 
-  #maketheoutfit > article > h5:nth-of-type(1) {
+  #maketheoutfit > article > h5:nth-of-type(1), h5:nth-of-type(2), h5:nth-of-type(3) {
     font-size: 1em;
-    padding: 0.5em;
-    height: 0 auto;
-    line-height: 1;
-    grid-column: 2/2;
-    grid-row: 2;
-    display: block;
-    margin: 1em;
-}
-
-#maketheoutfit > article > h5:nth-of-type(2) {
-    font-size: 1em;
-    padding: 0.5em;
-    height: 0 auto;
     line-height: 1;
     grid-column: 2/2;
     grid-row: 2;
@@ -206,10 +184,8 @@ main {
 
   #maketheoutfit > article > a {
     font-size: 1em;
-    padding: 1em;
-    line-height: 1;
-    height: 0 auto;
     grid-column: 1;
+    padding: 1em;
     grid-row: 1;
     display: block;
     margin: 1em;
@@ -234,9 +210,22 @@ main {
  #maketheoutfit > section {
       position: relative;
       display: grid;
-      grid-template-columns: 50% 50% auto;
-      
+      grid-template-columns: 50% 50% auto;   
   }
+
+  #maketheoutfit > article > form > button {
+    height: 38px;
+    width: 50px;
+    position: relative;
+    background-color: #00C7A9;
+    border-radius: 4em;
+    display: block;
+    box-shadow: 0px 2px 7px 0px #5B5B5B;
+    margin-top: 1em;
+    margin-left: 0.5em;
+  }
+
+
  
 
 ul {
@@ -325,3 +314,98 @@ a {
 #sendOutfitrequest h1 {
     color: black;
 }
+
+/*maketheoutfitresults page*/
+#maketheoutfitresults > h2 {
+    text-align: center;
+    padding-top: 0;
+    margin: 0;
+}
+
+
+#maketheoutfitresults {
+    display: block;
+    margin: 1em;
+    padding-bottom: 5em;
+    background-color: white;
+    border-radius: 1em;
+    box-shadow: 0px 3px 10px -1px lightgrey;
+}
+
+#maketheoutfitresults > img {
+    display: block;
+    width:  16em;
+    height: 23em;
+    margin: 1em;
+    margin-left: auto 0;
+    margin-right: auto 0;
+}
+
+#maketheoutfit > h1 {
+    color: black;
+    margin: 0.5em;
+    font-size: 2.5em;
+
+}
+
+
+#maketheoutfitresults > p {
+    margin: 1em;
+}
+
+/*Chosenclothing*/
+#chosenclothing {
+    background-color: white;
+    height: 150em;
+}
+
+#chosenclothing > article > h2 {
+    text-align: center;
+    font-size: 1em;
+
+}
+
+#chosenclothing > h1 {
+    color: black;
+    margin: 1em;
+    padding: 1em;
+    font-size: 1.5em;
+
+}
+
+#chosenclothing > article > h4 {
+    color: black;
+    margin: 1em;
+    font-size: 1em;
+}
+
+#chosenclothing > article > h5 {
+    color: black;
+    margin: 1em;
+    padding: 1em;
+    font-size: 1em;
+}
+
+#chosenclothing > article > img {
+    display: block;
+    width:  16em;
+    height: 23em;
+    padding: 1.5em;
+    margin-left: 0 auto;
+    margin-right: 0 auto; 
+}
+
+#chosenclothing > article > a {
+    font-size: 1em;
+    grid-column: 1;
+    padding: 1em;
+    grid-row: 1;
+    display: block;
+    margin: 1em;
+}
+
+
+
+
+
+

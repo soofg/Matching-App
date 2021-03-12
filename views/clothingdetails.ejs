@@ -6,18 +6,20 @@
 <body>
     <%- include('../views/partials/header.ejs') %>
 
-        <main>
+    <main id="maketheoutfitresults">
     <h1><%= title %></h1>
     <h2><%= clothes.name %></h2>
     <img src="<%= clothes.image %>">
+    
     <h3><%= clothes.merk %></h3>
     <h3><%= clothes.material %></h3>
     <h4>Categories: </h4>
-    <ul>
+    <h5>
         <% clothes.categories.forEach(function(category){ %>
         <li><%= category %></li>
         <% }) %>
-    </ul>
+        </h5>
+        <p><%= clothes.beschrijving %></p>
         </main>
 
 </body>

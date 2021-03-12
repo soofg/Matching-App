@@ -9,19 +9,14 @@
       <section>
         <button></button>
         <img src="pen.png" alt="pen" />
-        <a href="/maketheoutfit/chosenclothing"></a>
-        <img
-          src="hartje.svg"
-          href="/maketheoutfit/chosenclothing"
-          alt="a heart"
-        />
+        <a href="/maketheoutfit/chosenclothing">&#10084;</a>
       </section>
 
       <form action='/maketheoutfit' method="post">
         <ul>
           <li class="submenuknop"><a>Merken</a></li>
           <ol>
-            <input type="checkbox" name="merken" value="H&M" />H&M
+            <input type="checkbox" name="merken" value="H&M" />
             <label>H&M</label>
 
             <div>
@@ -48,8 +43,8 @@
             </div>
 
             <div>
-              <input type="checkbox" name="categories" value="Jeans" />
-              <label>Jeans</label>
+              <input type="checkbox" name="categories" value="Pants" />
+              <label>Pants</label>
             </div>
           </ol>
 
@@ -64,7 +59,7 @@
         <h2><%= clothes.name %></h2>
             <img src="<%= clothes.image %>">
             <form action="/maketheoutfit/chosenclothing" method="POST">
-            <button type="submit" name="saveit" value="<%= clothes._id %>"><img id="hartButton"class="hartje" src="hartje.svg" alt="a heart"></button>
+            <button type="submit" name="saveit" value="<%= clothes._id %>">	&#10084;</button>
             </form>
             <h4><%= clothes.merk %></h4>
             <h4><%= clothes.category %></h4>
@@ -76,10 +71,6 @@
                 <% }) %>
           </article>
       
-
-      <nav>
-        <a href=" "></a>
-      </nav>
     </main>
     <script src="/js/script.js"></script>
   </body>

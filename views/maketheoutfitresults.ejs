@@ -10,24 +10,24 @@
       <section>
         <button></button>
         <img src="pen.png" alt="pen">
-        <a href="/maketheoutfit/chosenclothing"></a>
-        <img src="hartje.svg" href="/maketheoutfit/chosenclothing" alt="a heart">
+        <a href="/maketheoutfit/chosenclothing">&#10084;</a>
+        
       </section>
 
       <ul>
         <li class="submenuknop"><a>Merken</a></li>
         <ol>
           <form method="post">
-            <input type="checkbox" name="merken" value="straplessdress">H&M
+            <input type="checkbox" name="merken" value="Dress">H&M
             <label>H&M</label>
 
           <div>
-            <input type="checkbox" name="merken" value="leatherskirt">
+            <input type="checkbox" name="merken" value="Skirt">
             <label>ZARA</label>
           </div>
 
           <div>
-            <input type="checkbox" name="merken" value="jeans">
+            <input type="checkbox" name="merken" value="Pants">
             <label>Bershka</label>
           </div>
         </ol>
@@ -37,47 +37,42 @@
 
         <li id="submenuknop3"><a>Categories</a></li>
         <ol id=menulijst3>
-            <input type="checkbox" name="categories" value="straplessdress">
+            <input type="checkbox" name="categories" value="Dress">
             <label>Dress</label>
 
           <div>
-            <input type="checkbox" name="categories" value="leatherskirt">
+            <input type="checkbox" name="categories" value="Skirt">
             <label>Skirt</label>
           </div>
 
           <div>
-            <input type="checkbox" name="categories" value="jeans">
-            <label>Jeans</label>
+            <input type="checkbox" name="categories" value="Jeans">
+            <label>Pants</label>
           </div>
-
-  
-          <button type="submit" name="merken" class="submitknop">Done & Search</button>
-        
-
         </ol>
+
+        <button id="submitbutton " type="submit" class="submitknop">
+          Done & Search
+        </button>
       </ul>
-      </form>
-    
-    </main>
-    <script src="/js/script.js"></script>
-</body>
-
-</html>
+    </form>
   
-
-<article>
+<h1><%= title %></h1>
+<article id="maketheoutfitresults">
   <% maketheoutfit.forEach(function(clothes){ %>
   <h2><%= clothes.name %></h2>
       <img src="<%= clothes.image %>">
-      <img class="hartje" src="hartje.svg" alt="a heart">
+      <form action="/maketheoutfit/chosenclothing" method="POST">
+        <button type="submit" name="saveit" value="<%= clothes._id %>">&#10084;</button>
+        </form>
       <h4><%= clothes.merk %></h4>
       <h4><%= clothes.category %></h4>
       <h5>Categories: 
-      <% clothes.categories.forEach(function(category){ %>
-      <%= category %>
-        <% }) %></h5>
-          <a href="maketheoutfit/<%= clothes.id %>">>See this item</a>
-          <% }) %>
+        <% clothes.categories.forEach(function(category){ %>
+        <%= category %>
+          <% }) %></h5>
+            <a href="maketheoutfit/<%= clothes.id %>">>See this item</a>
+            <% }) %>
     </article>
 
   </main>

@@ -11,7 +11,6 @@ const port = 3000;
 const { MongoClient, ObjectID } = require('mongodb');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
-const Clothes = require('./models/clothes');
 
 // verbinden met de mongo database
 let db = null;
@@ -60,9 +59,9 @@ app.listen(3000, () => {
 app.use(express.static('public'));
 app.use(express.static('public/images'));
 app.use(express.static('public/js'));
-app.use('/css', express.static(`${__dirname}public/css`)); // link naar je css folder
-app.use('/js', express.static(`${__dirname}public/js`)); // link naar je js folder
-app.use('/images', express.static(`${__dirname}public/images`)); // link naar je images folder
+app.use('/css', express.static('/public/css')); // link naar je css folder
+app.use('/js', express.static('/public/js')); // link naar je js folder
+app.use('/images', express.static('public/images')); // link naar je images folder
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // (EJS)Display je html op je localhost (omdat de index in de root van ons document zit,
@@ -79,12 +78,14 @@ app.get('/menu', (req, res) => {
   res.render('menu', { text: ' ' });
 });
 
+//laad kledingitems uit database wanneer we via get route maketheoutfit aanvragen.
 app.get('/maketheoutfit', async (req, res) => {
   let maketheoutfit = {}; // data vanuit de database
   maketheoutfit = await db.collection('clothes').find({}, { sort: {} }).toArray();
   res.render('maketheoutfit', { text: 'What To Wear', maketheoutfit });
 });
 
+//filteren op een bepaald kledingitem
 app.post('/maketheoutfit', async (req, res) => {
   const clothes = await db.collection('clothes').find({}).toArray();
   const clothingitems = clothes.filter((clothes) => clothes.merk.toLowerCase() === req.body.merken.toLowerCase() && clothes.categories.includes(req.body.categories.toLowerCase()));
@@ -92,9 +93,10 @@ app.post('/maketheoutfit', async (req, res) => {
   console.log(clothes);
   console.log(req.body.merken);
   console.log(req.body.categories);
-  res.render('maketheoutfitresults', { maketheoutfit: clothingitems });
+  res.render('maketheoutfitresults', { title: 'Results' , maketheoutfit: clothingitems });
 });
 
+//pagina om gekozen producten op te slaan
 app.get('/maketheoutfit/chosenclothing', async (req, res) => {
   const clothes = await db.collection('clothes');
   const savedItems = await db.collection('savedItems');
@@ -120,6 +122,7 @@ app.get('/maketheoutfit/chosenclothing', async (req, res) => {
   });
 });
 
+//aangeklikte kledingitems opslaan op de database om dan weer te geven op de chosenclothing pagina
 app.post('/maketheoutfit/chosenclothing', async (req, res) => {
   const clothes = await db.collection('clothes');
   const savedItems = await db.collection('savedItems');
@@ -131,7 +134,7 @@ app.post('/maketheoutfit/chosenclothing', async (req, res) => {
     { $push: { saves: savedItem } },
   );
 
-  savedItems.findOne({ _id: objectID }, (err, savedItemsObject) => {
+  savedItems.findOne({ _id: objectID }, (err, savedItemsObject) => { // object id die nu in saveditems staat controleren
     if (err) {
       console.log(err);
     } else {
@@ -157,8 +160,8 @@ app.get('/maketheoutfit/:clothesId', async (req, res) => {
   res.render('clothingdetails', { title: 'Clothing Details', clothes });
 });
 
+//----------------------------------------------
 // formuliertje
-
 app.get('/outfithelprequest', (req, res) => {
   res.render('outfithelprequest', { title: 'Hi' });
 });

@@ -5,21 +5,21 @@
   <body>
     <%- include('../views/partials/header.ejs') %>
 
-    <main>
+    <main id="chosenclothing">
       
-        <h1>test</h1>
+      <h1>Chosen Clothing</h1>
         <article>
           <% savedClothing.forEach(function(clothes){ %>
           <h2><%= clothes.name %></h2>
               <img src="<%= clothes.image %>">
-              <a href="maketheoutfit/chosenclothing"><img class="hartje" src="hartje.svg" alt="a heart"></a>
+              <a href="maketheoutfit/chosenclothing"></a>
               <h4><%= clothes.merk %></h4>
               <h4><%= clothes.category %></h4>
               <h5>Categories: 
               <% clothes.categories.forEach(function(category){ %>
               <%= category %>
                 <% }) %></h5>
-                  <a href="maketheoutfit/<%= clothes.id %>">>See this item</a>
+                  <a href="<%= clothes.id %>">>See this item</a>
                   <% }) %>
             </article>
 
