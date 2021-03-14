@@ -118,6 +118,7 @@ app.post('/maketheoutfit/chosenclothing', async (req, res) => {
     { $push: { saves: savedItem } },
   );
 
+  //controleren
   savedItems.findOne({ _id: objectID }, (err, savedItemsObject) => { // object id die nu in saveditems staat controleren
     if (err) {
       console.log(err);
