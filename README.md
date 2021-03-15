@@ -36,6 +36,8 @@ You can filter on:
 - Merk
 - Sort / categories
 
+And save your favorite clothing-items!
+
 ## Contact
 If you have any questions, open up a issue.
 
